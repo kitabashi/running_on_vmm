@@ -4,10 +4,10 @@ pc_type=['pcsmall','pcmedium','pcbig']
 vm_type={
    'gw': {'ncpus' : 1,'memory':2048},
    'pcsmall': {'ncpus' : 1,'memory':4096},
-   'pcmedium': {'ncpus' : 4,'memory':32768},
+   'pcmedium': {'ncpus' : 2,'memory':16384},
    'pcbig': {'ncpus' : 4,'memory':32768},
    'junos': ''
 }
-vm_os=['centos','ubuntu','vmx','vqfx','vsrx3','vsrx']
+vm_os=['centos','ubuntu','vmx','vqfx',','vsrx']
 tmp_dir="./tmp/"
 
