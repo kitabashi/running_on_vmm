@@ -59,5 +59,5 @@ There are different arguments required by this script
 - this script will need a GW which will be assigned with IP address from juniper's VMM lab. The rest of the VMs (devices), their management will be connected to virtual network behind the GW.
 - to access the other devices (other than GW), VM GW can be used as jump host, or VM GW can be configured as VPN server using [wireguard](https://www.wireguard.com/install/) or openvpn
  
-## Topology of sample configuration
-![](script/topology_sample.png)
+## How to run the script (Step by step)
+**[step_by_step.md](step_by_step.md)**
