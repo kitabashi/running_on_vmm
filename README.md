@@ -60,4 +60,5 @@ There are different arguments required by this script
 - to access the other devices (other than GW), VM GW can be used as jump host, or VM GW can be configured as VPN server using [wireguard](https://www.wireguard.com/install/) or openvpn
  
 ## How to run the script (Step by step)
-**[step_by_step.md](step_by_step.md)**
+- **[Running simple topology](simple/README.md)**
+- **[Contrail Lab](contrail/README.md)**
