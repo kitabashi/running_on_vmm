@@ -18,5 +18,12 @@ This script requires the following :
 
 ## VM images 
 Before the script is used, the VM images must be available on the VMM.
-
 please upload the VM images into directory /vmm/data/user_disks/<your_user_name>
+
+## Script Files
+
+This tool consist of the following script
+- **[vmm.py](script/vmm.py)**
+- **[lib1.py](script/lib1.py)**
+- **[param1.py](script/param1.py)**
+- **[lab.yaml](script/lab.yaml)**
