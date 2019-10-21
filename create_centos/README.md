@@ -7,33 +7,32 @@ Few notes regarding Centos Cloud image :
 - To simplify, I have created the seed [CDROM image](seed.img), where the password for default user (userid : centos) is set to `mysecret`
 
 1. Download Centos cloud Image from [centos image](https://cloud.centos.org/centos/7/images/)
-[download](download_image.png)
-2. Download the [seed cdrom image](seed.img), and put it on the same directory as the previous image. 
-3. Create VMM configuration file, with the following content :
+![download](images/download_image.png)
+2. Copy the files to file centos80g.img
+![copy_image](images/copy_image.png)
+3. By default, the centos cloud image size is 8G, to change the size, use the command `qemu-img resize <image_file> <new_size>`
+4. Download the [seed cdrom image](seed.img), and put it on the same directory as the previous image. 
+4. Create VMM configuration file, with the following content :
 
-[irzan@q-pod13-vmm make_image]$ cat centosmake.conf
-#include "/vmm/bin/common.defs"
+	[irzan@q-pod13-vmm make_image]$ cat centosmake.conf
+	#include "/vmm/bin/common.defs"
+	#define INSTALL_DISK bootdisk_rw "/vmm/data/user_disks/irzan/make_image/centos80g.img";
+	#define CDROM_BOOT cdrom_boot "/vmm/data/user_disks/irzan/make_image/seed.img";
+	config "make1" {
+		vm "centos1" {
+			hostname "centos1";
+			INSTALL_DISK
+			CDROM_BOOT
+			ncpus 2;
+			memory 4096;
+			setvar "+qemu_args" "-cpu qemu64,+vmx";
+			interface "em0" { bridge "private1"; };
+		};
 
-#define INSTALL_DISK bootdisk_rw "/vmm/data/user_disks/irzan/make_image/centos80g.img";
+		PRIVATE_BRIDGES
+	};
 
-#define CDROM_BOOT cdrom_boot "/vmm/data/user_disks/irzan/make_image/seed.img";
-
-config "make1" {
-
-  vm "centos1" {
-    hostname "centos1";
-    INSTALL_DISK
-    CDROM_BOOT
-    ncpus 2;
-    memory 4096;
-    setvar "+qemu_args" "-cpu qemu64,+vmx";
-    interface "em0" { bridge "private1"; };
-  };
-
-PRIVATE_BRIDGES
-};
-
-[irzan@q-pod13-vmm make_image]$
+	[irzan@q-pod13-vmm make_image]$
 
 
 
