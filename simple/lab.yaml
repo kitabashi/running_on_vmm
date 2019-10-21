@@ -3,7 +3,7 @@ name: simple
 vmm_pod:
     server: q-pod13-vmm.englab.juniper.net
     user: irzan
-    password: <your_password>
+    password: ^M1r#Z4n
     image:
         centos: centos80g.img
         ubuntu: ubuntu160406.img
@@ -23,14 +23,14 @@ vm:
           em1: [mgmt,172.16.10.1/24]
     pc1:
         type: pcsmall
-        os: ubuntu
+        os: centos
         interfaces:
           em0: [mgmt,172.16.10.11/24,172.16.10.1]
           em1: lan1a
           em2: lan1b
     pc2:
         type: pcsmall
-        os: centos 
+        os: centos
         interfaces:
           em0: [mgmt,172.16.10.12/24,172.16.10.1]
           em1: lan2a
