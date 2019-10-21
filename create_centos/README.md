@@ -56,6 +56,6 @@ The following steps is used to create VMM image from Centos Cloud Image.
 ![grub2_mkconfig](images/grub2_mkconfig.png)
 ![grub2](images/grub2.png)
 14. Shutdown the VM , stop and unbind it on the VMM
-![stop_unbind](stop_unbind.png)
+![stop_unbind](images/stop_unbind.png)
 15. Move the image file into your repository so it can be used 
-![move_image](move_image.png)
+![move_image](images/move_image.png)
