@@ -5,7 +5,7 @@ The following steps is used to create VMM image from Centos Cloud Image.
 - By default it doesn't have any password. During the first boot, cloud-init will try to retrieve the configuration (which may include password and ssh-key). In the openstack environment, cloud-init is provided by openstack infrastructure.
 - If cloud-init failed to retrieve the configuration, the VM will boot with random password.
 - Configuration to the cloud-init, can also be provided through CDROM image attached to the VM during the first boot. Inside the CDROM image must have the configuration files required by cloud init, including password. How to create this CDROM seed image can be found [here](https://stafwag.github.io/blog/blog/2019/03/03/howto-use-centos-cloud-images-with-cloud-init/) 
-- To simplify the process, I have created the seed [CDROM image](seed.img), where the password for default user (userid : centos) is set to `mysecret`
+- To simplify the process, I have created the seed [CDROM image](https://github.com/m1r24n/running_on_vmm/blob/master/cdrom/seed.img), where the password for default user (userid : centos) is set to `mysecret`
 
 ## Steps
 1. Download Centos cloud Image from [centos image](https://cloud.centos.org/centos/7/images/)
@@ -13,7 +13,7 @@ The following steps is used to create VMM image from Centos Cloud Image.
 2. Copy the files to file with new name, for example `centos80g.img` and resize the image accordingly
 ![copy_image](images/copy_image.png)
 3. By default, the centos cloud image size is 8G, to change the size, use the command `qemu-img resize <image_file> <new_size>`
-4. Download the [seed cdrom image](seed.img), and put it on the same directory as the previous image. 
+4. Download the [seed cdrom image](https://github.com/m1r24n/running_on_vmm/blob/master/cdrom/seed.img), and put it on the same directory as the previous image. 
 4. Create VMM configuration file, with the following content :
 ```
 	[irzan@q-pod13-vmm make_image]$ cat centosmake.conf
