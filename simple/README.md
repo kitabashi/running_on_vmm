@@ -40,4 +40,4 @@ Steps to configure
 ![get_serial1](vmm_get_serial1.png)
 
 10. Now you can play around with the topology by uploading or configuring the devices
-11. optionally, wireguard VPN can be installed on GW, to allow direct access into the devices. Please refer to this [install wireguard on vmm](https://github.com/m1r24n/running_on_vmm/install_wg_on_vmm) on HOW-TO document
+11. optionally, wireguard VPN can be installed on GW, to allow direct access into the devices. Please refer to this [install wireguard on vmm](https://github.com/m1r24n/running_on_vmm/tree/master/install_wg_on_vmm) on HOW-TO document
