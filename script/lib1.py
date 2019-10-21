@@ -133,7 +133,7 @@ def start(d1):
 	for i in s2.readlines():
 		print(i.rstrip())
 	print("start configuration ")
-	cmd1="vmm config " + lab_conf  + " -g vmm-default"
+	cmd1="vmm config " + lab_conf  + " " + param1.vmm_group
 	s1,s2,s3=ssh.exec_command(cmd1)
 	for i in s2.readlines():
 		print(i.rstrip())

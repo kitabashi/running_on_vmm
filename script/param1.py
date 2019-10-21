@@ -8,6 +8,7 @@ vm_type={
    'pcbig': {'ncpus' : 4,'memory':32768},
    'junos': ''
 }
-vm_os=['centos','ubuntu','vmx','vqfx',','vsrx']
+vm_os=['centos','ubuntu','vmx','vqfx','vsrx']
 tmp_dir="./tmp/"
+vmm_group="-g vmm-default"
 
