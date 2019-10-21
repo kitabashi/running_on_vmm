@@ -5,7 +5,7 @@ vmm_pod:
     user: irzan
     password: <your_password>
     image:
-        centos: centos7.6.img
+        centos: centos80g.img
         ubuntu: ubuntu160406.img
         vmx_re: vmx-19.3R1.8/junos-vmx-x86-64-19.3R1.8.vmdk
         vmx_mpc: vmx-19.3R1.8/vFPC-20190819.vmdk
