@@ -8,12 +8,12 @@ Few notes regarding Centos Cloud image :
 
 1. Download Centos cloud Image from [centos image](https://cloud.centos.org/centos/7/images/)
 ![download](images/download_image.png)
-2. Copy the files to file centos80g.img
+2. Copy the files to file with new name, for example `centos80g.img` and resize the image accordingly
 ![copy_image](images/copy_image.png)
 3. By default, the centos cloud image size is 8G, to change the size, use the command `qemu-img resize <image_file> <new_size>`
 4. Download the [seed cdrom image](seed.img), and put it on the same directory as the previous image. 
 4. Create VMM configuration file, with the following content :
-
+```
 	[irzan@q-pod13-vmm make_image]$ cat centosmake.conf
 	#include "/vmm/bin/common.defs"
 	#define INSTALL_DISK bootdisk_rw "/vmm/data/user_disks/irzan/make_image/centos80g.img";
@@ -33,6 +33,6 @@ Few notes regarding Centos Cloud image :
 	};
 
 	[irzan@q-pod13-vmm make_image]$
-
-
+```
+5. Enable the config and start the topology
 
