@@ -20,6 +20,9 @@ This script requires the following :
 Before the script is used, the VM images must be available on the VMM.
 
 Please upload the VM images into directory /vmm/data/user_disks/<your_user_name>
+
+You can copy my images from /vmm/data/user_disks/irzan
+
 ### How to create Centos/Ubuntu image.
 Please refer to the following URL on how to create [centos](create_centos/README.md)
 
