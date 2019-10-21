@@ -9,7 +9,7 @@ This is an example of simple topology on VMM, consist of the following
 ![topology](simple.png)
 
 Steps to configure
-1. Create the [lab.yaml](simple/lab.yaml) for this topology. Verify the following :
+1. Create the [lab.yaml](lab.yaml) for this topology. Verify the following :
     - VMM Pod servers
     - user/password to login into VMM pod
     - user/password for junos devices
@@ -36,7 +36,8 @@ Steps to configure
 ![access2](vmm_access2.png)
 ![access3](vmm_access3.png)
 9. The serial console information for each devices can be displayed using command `vmm get_serial`
-![get_serial0][vmm_get_serial0.png)
-![get_serial1][vmm_get_serial1.png)
+![get_serial0](vmm_get_serial0.png)
+![get_serial1](vmm_get_serial1.png)
 
 10. Now you can play around with the topology by uploading or configuring the devices
+11. optionally, wireguard VPN can be installed on GW, to allow direct access into the devices. Please refer to this [install wireguard on vmm](https://github.com/m1r24n/running_on_vmm/install_wg_on_vmm/README.md) on HOW-TO document
