@@ -20,7 +20,10 @@ This script requires the following :
 Before the script is used, the VM images must be available on the VMM.
 
 Please upload the VM images into directory /vmm/data/user_disks/<your_user_name>
+### How to create Centos/Ubuntu image.
+Please refer to the following URL on how to create [centos](create_centos/README.md)
 
+Please refer to the following URL on how to create [ubuntu](create_ubuntu/README.md)
 ## Script Files
 
 This tool consist of the following script
