@@ -23,6 +23,17 @@ The following are the screeshot
 ![gw_configuration](gw_configuration0.png)
 6. Change the /etc/wireguard directory to be accessible only by root
 ![gw_configuration](gw_configuration1.png)
-7. Start the wireguard services on GW 
+7. Start the wireguard services on GW, and optionally make it permanent.
+![gw_configuration](gw_configuration2.png)
+8. Create configuration for client and import it into client's software
+![client_configuration1](client_configuration1.png)
+9. Activate the connection and verify that  connection is established
+Before client is activated
+![client1](client1.png)
+![client2](client2.png)
+Client is activated
+![client3](client2.png)
+![client4](client2.png)
+
 
 
