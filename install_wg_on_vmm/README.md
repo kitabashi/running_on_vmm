@@ -29,11 +29,11 @@ The following are the screeshot
 ![client_configuration1](client_configuration1.png)
 9. Activate the connection and verify that  connection is established
 Before client is activated
-![client1](client1.png)
-![client2](client2.png)
+![client1](client_1.png)
+![client2](client_2.png)
 Client is activated
-![client3](client2.png)
-![client4](client2.png)
+![client3](client_3.png)
+![client4](client_4.png)
 
 
 
