@@ -28,6 +28,7 @@ The following are the screeshot
 8. Create configuration for client and import it into client's software
 ![client_configuration1](image/client_configuration1.png)
 9. Activate the connection and verify that  connection is established
+
 Before client is activated
 ![client1](image/client_1.png)
 ![client2](image/client_2.png)
