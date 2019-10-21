@@ -6,10 +6,10 @@ This is an example of simple topology on VMM, consist of the following
 - 4 x PC 
 
 # Topology
-![](simple/simple.png)
+![topology](simple/simple.png)
 
 Steps to configure
-1. Create the [lab.yam](simple/lab.yaml) for this topology. Verify the following :
+1. Create the [lab.yaml](simple/lab.yaml) for this topology. Verify the following :
     - VMM Pod servers
     - user/password to login into VMM pod
     - user/password for junos devices
