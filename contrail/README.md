@@ -101,15 +101,15 @@ The documentation mention that the ansible version required is 2.7.10.
 but this version may not be available anymore from EPEL repository.
 To install ansible version 2.7.10, please use python pip, do not use yum.
 
-    ```
-    yum -y install epel-release
-    yum -y update
-    yum install git python-pip
-    pip install ansible==2.7.10
-    yum -y remove PyYAML python-requests
-    pip install PyYAML requests
-    yum -y install sshpass
-    ```
+	```
+	yum -y install epel-release
+	yum -y update
+	yum install git python-pip
+	pip install ansible==2.7.10
+	yum -y remove PyYAML python-requests
+	pip install PyYAML requests
+	yum -y install sshpass
+	```
 
 ![install_epel_release](images/install_epel_release.png)
 ![yum_update](images/yum_update.png)
