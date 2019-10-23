@@ -6,9 +6,10 @@ The logical topology of the testbed is as follows :
 ![topology](images/topology.png)
 
 The devices/nodes in the topology are :
-0: GW
+
+1. GW
     - gateway between juniper's intranet and testbed network
-1. Contrail nodes 
+2. Contrail nodes 
     - node0 : Openstack/Contrail contoller
     - node1 : compute
     - node2 : compute
@@ -16,10 +17,10 @@ The devices/nodes in the topology are :
     - node4 : Appformix
     - node5 : contrail command
     - node6 : deployer
-2. DC Fabric
+3. DC Fabric
     - VMX : DCGW
     - spine1, spine2, leaf1, leaf2 : DC Fabric
-3. Servers
+4. Servers
     - svr1, svr2, svr3 : BMS in the DC Fabric
     - ext1l3 : External node connected through L3
     - ext2l2 : external node connected through L2
@@ -97,7 +98,7 @@ command to copy /etc/hosts
 ## Openstack and Contrail installation using ansible deployer
 1. For contrail 1910, please follow the [manual](https://www.juniper.net/documentation/en_US/contrail19/topics/concept/install-contrail-ocata-kolla-50.html)
 
-	The documentation mention that the ansible version required is 2.7.10. 
+	The documentation mention that the ansible version required is 2.7.10, 
 	but this version may not be available anymore from EPEL repository.
 
 	To install ansible version 2.7.10, please use python pip, do not use yum.
@@ -136,5 +137,16 @@ command to copy /etc/hosts
 7. Run the following command :
     - ansible-playbook -e orchestrator=openstack -i inventory/ playbooks/install_contrail.yml
 ![vnc4](images/vnc4.png)
+8. Contrail installation is done. It can be verified by accessing the openstack dashboard (http://172.16.11.10) or contrail dashboard (old UI, http://172.16.11.10:8180) or run the command `contrail-status` on any of the contrail-nodes (controller, compute, or CSN)
 
-
+## Appformix Installation
+1. ssh into the compute nodes, and install libvirt-client
+![appformix0](images/appformix0.png)
+2. On deployer node, create directory ~/appformix, and upload the appformix installation files and license into this directory.
+![appformix1](images/appformix1.png)
+3. The yaml file for appformix installation is part of the [instances.yaml](instances.yaml)
+4. Extract appformix installation file, and enter the directory where the extracted file is located.
+![appformix2](images/appformix2.png)
+5. Run the playbook to install appformix
+![appformix3](images/appformix3.png)
+6. Appformix installation is done. It can be verified by accessing the appformix dashboard, http://172.16.11.15)
