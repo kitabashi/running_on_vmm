@@ -77,15 +77,19 @@ You can create your own configuration for the junos devices, or use the followin
 ![copy_sshkey](images/copy_sshkey.png)
 
 command to copy ssh-key
+
     ```
     for i in {1..6}
     do
     ssh-copy-id -i ~/.ssh/id_rsa.pub root@node${i}
     done
     ```
+
 4. Copy file /etc/hosts to node1 .. node6
 ![copy_etc_hosts](images/copy_etc_hosts.png)
+
 command to copy /etc/hosts
+
     ```
    	for i in {1..6}
 	do
