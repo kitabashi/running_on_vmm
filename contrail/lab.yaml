@@ -1,0 +1,138 @@
+---
+name: contrail
+vmm_pod:
+    server: q-pod08-vmm.englab.juniper.net
+    user: irzan
+    password: ^M1r#Z4n
+    image:
+        centos: centos80g.img
+        ubuntu: ubuntu100g.img
+        vmx_re: vmx-19.3R1.8/junos-vmx-x86-64-19.3R1.8.vmdk
+        vmx_mpc: vmx-19.3R1.8/vFPC-20190819.vmdk
+        vqfx_re: vqfx/jinstall-vqfx-10-f-17.3R3-S2.2.vmdk
+        vqfx_cosim: vqfx/cosim-2018-02-12.vmdk
+    junos_login:
+        login: admin
+        password: pass01
+vm:
+    gw:
+        type: gw
+        os: centos
+        interfaces:
+          em0: external
+          em1: [lan1,172.16.11.1/24]
+          em2: [vmxg0,172.16.12.0/31]
+          em3: [vmxg1,172.16.12.2/31]
+          em4: [mgmt,172.16.14.1/24]
+    node0:
+        type: pcbig
+        os: centos
+        interfaces:
+          em0: [lan1,172.16.11.10/24,172.16.11.1]
+    node1:
+        type: pcbig
+        os: centos
+        interfaces:
+          em0: [lan1,172.16.11.11/24,172.16.11.1]
+    node2:
+        type: pcbig
+        os: centos
+        interfaces:
+          em0: [lan1,172.16.11.12/24,172.16.11.1]
+    node3:
+        type: pcmedium
+        os: centos
+        interfaces:
+          em0: [lan1,172.16.11.13/24,172.16.11.1]
+    node4:
+        type: pcbig
+        os: centos
+        interfaces:
+          em0: [lan1,172.16.11.14/24,172.16.11.1]
+    node5:
+        type: pcmedium
+        os: centos
+        interfaces:
+          em0: [lan1,172.16.11.15/24,172.16.11.1]
+    node6:
+        type: pcmedium
+        os: centos
+        interfaces:
+          em0: [lan1,172.16.11.16/24,172.16.11.1]
+    svr1:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.11/24]
+          em1: l1p2
+    svr2:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.12/24]
+          em1: l2p2
+          em2: l2p4
+    svr3:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.13/24]
+          em1: l1p3
+          em1: l2p3
+    ext1l2:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.14/24]
+          em1: vmxg4
+    ext1l3:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.15/24]
+          em1: vmxg5
+    vmx1:
+        type: junos
+        os: vmx
+        interfaces:
+          fxp0: [mgmt,172.16.14.30/24]
+          ge-0/0/0: vmxg0
+          ge-0/0/1: vmxg1 
+          ge-0/0/2: vmxg2
+          ge-0/0/3: vmxg3
+          ge-0/0/4: vmxg4
+    spine1:
+        type: junos
+        os: vqfx
+        interfaces:
+          em0: [mgmt,172.16.14.31/24]
+          xe-0/0/0: vmxg2
+          xe-0/0/1: s1l1 
+          xe-0/0/2: s1l2
+    spine2:
+        type: junos
+        os: vqfx
+        interfaces:
+          em0: [mgmt,172.16.14.32/24]
+          xe-0/0/0: vmxg3
+          xe-0/0/1: s2l1
+          xe-0/0/2: s2l2
+    leaf1:
+        type: junos
+        os: vqfx
+        interfaces:
+          em0: [mgmt,172.16.14.33/24]
+          xe-0/0/0: s1l1
+          xe-0/0/1: s2l1
+          xe-0/0/2: l1p2
+          xe-0/0/3: l1p3
+    leaf2:
+        type: junos
+        os: vqfx
+        interfaces:
+          em0: [mgmt,172.16.14.34/24]
+          xe-0/0/0: s1l2
+          xe-0/0/1: s2l2
+          xe-0/0/2: l2p2
+          xe-0/0/3: l2p3
+          xe-0/0/4: l2p4

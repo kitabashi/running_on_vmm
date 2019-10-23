@@ -1,12 +1,12 @@
 ---
 name: simple
 vmm_pod:
-    server: q-pod13-vmm.englab.juniper.net
+    server: q-pod08-vmm.englab.juniper.net
     user: irzan
     password: <your_password>
     image:
         centos: centos80g.img
-        ubuntu: ubuntu160406.img
+        ubuntu: ubuntu100g.img
         vmx_re: vmx-19.3R1.8/junos-vmx-x86-64-19.3R1.8.vmdk
         vmx_mpc: vmx-19.3R1.8/vFPC-20190819.vmdk
         vqfx_re: vqfx/jinstall-vqfx-10-f-17.3R3-S2.2.vmdk
@@ -23,7 +23,7 @@ vm:
           em1: [mgmt,172.16.10.1/24]
     pc1:
         type: pcsmall
-        os: centos
+        os: ubuntu
         interfaces:
           em0: [mgmt,172.16.10.11/24,172.16.10.1]
           em1: lan1a
