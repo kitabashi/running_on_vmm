@@ -77,7 +77,6 @@ You can create your own configuration for the junos devices, or use the followin
 ![copy_sshkey](images/copy_sshkey.png)
 
 command to copy ssh-key
-
     ```
     for i in {1..6}
     do
@@ -89,7 +88,6 @@ command to copy ssh-key
 ![copy_etc_hosts](images/copy_etc_hosts.png)
 
 command to copy /etc/hosts
-
     ```
    	for i in {1..6}
 	do
