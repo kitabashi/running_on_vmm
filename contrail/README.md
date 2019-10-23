@@ -75,21 +75,21 @@ You can create your own configuration for the junos devices, or use the followin
 ![create_ssh_key_node6](images/create_ssh_key_node6.png)
 3. copy the ssh-key to node1 .. node6 to allow passwordless ssh access from node6 
 ![copy_sshkey](images/copy_sshkey.png)
-
 command to copy ssh-key
-    ```
-    for i in {1..6}
-    do
-    ssh-copy-id -i ~/.ssh/id_rsa.pub root@node${i}
-    done
-    ```
+
+```
+for i in {1..6}
+do
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@node${i}
+done
+```
 
 4. Copy file /etc/hosts to node1 .. node6
 ![copy_etc_hosts](images/copy_etc_hosts.png)
-
 command to copy /etc/hosts
-    ```
-   	for i in {1..6}
+
+	```
+	for i in {1..6}
 	do
 		scp /etc/hosts root@node${i}:/etc/hosts
 	done 
