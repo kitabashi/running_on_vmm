@@ -40,7 +40,7 @@ subnets in the testbed
 ![IP_GW](images/IP_GW.png)
 5. Wait for few minutes to allow the VMs to be up and running
 6. SSH into GW and verify that all nodes are up and running
-![ping1.png](ping1.png)
+![ping1.png](images/ping1.png)
 7. (optionally) install wireguard to have direct access to node from your workstation. Follow this [instruction](https://github.com/m1r24n/running_on_vmm/tree/master/install_wg_on_vmm) on how to install wireguard on VM inside the VMM.
 8. Establish VPN connection from your workstation to GW
 9. Test direct access into the nodes
