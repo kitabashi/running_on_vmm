@@ -100,7 +100,6 @@ command to copy /etc/hosts
 The documentation mention that the ansible version required is 2.7.10. 
 but this version may not be available anymore from EPEL repository.
 To install ansible version 2.7.10, please use python pip, do not use yum.
-
 	```
 	yum -y install epel-release
 	yum -y update
@@ -110,7 +109,6 @@ To install ansible version 2.7.10, please use python pip, do not use yum.
 	pip install PyYAML requests
 	yum -y install sshpass
 	```
-
 ![install_epel_release](images/install_epel_release.png)
 ![yum_update](images/yum_update.png)
 ![install_git_pip](images/install_git_pip.png)
@@ -126,11 +124,14 @@ To install ansible version 2.7.10, please use python pip, do not use yum.
 4. Get the vga_port of VM node6, and use this information (host and port number) to open VNC session to the console of node6 (using this method to run the playbooks, allow you to disconnect remote access session, and leave the playbook run until it finish). It may take 30 to 60 minutes to install.
 ![get_vga](images/get_vga.png)
 ![vnc1](images/vnc1.png)
+5. Enter contrail-ansible-deployer directory, and start the following command :
+    - ansible-playbook -e orchestrator=openstack -i inventory/ playbooks/configure_instances.yml
 ![vnc2](images/vnc2.png)
+6. Run the following command :
+    - ansible-playbook -i inventory/ playbooks/install_openstack.yml
 ![vnc3](images/vnc3.png)
+7. Run the following command :
+    - ansible-playbook -e orchestrator=openstack -i inventory/ playbooks/install_contrail.yml
 ![vnc4](images/vnc4.png)
 
-4. Enter contrail-ansible-deployer directory, and start the following command :
-    - ansible-playbook -e orchestrator=openstack -i inventory/ playbooks/configure_instances.yml
-    - ansible-playbook -i inventory/ playbooks/install_openstack.yml
-    - ansible-playbook -e orchestrator=openstack -i inventory/ playbooks/install_contrail.yml
+
