@@ -1,9 +1,9 @@
 ---
 name: contrail
 vmm_pod:
-    server: q-pod08-vmm.englab.juniper.net
+    server: q-pod13-vmm.englab.juniper.net
     user: irzan
-    password: <your_password>
+    password: ^M1r#Z4n
     image:
         centos: centos80g.img
         ubuntu: ubuntu100g.img

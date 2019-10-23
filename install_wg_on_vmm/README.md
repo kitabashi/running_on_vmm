@@ -47,7 +47,7 @@ Client configuration
 Address=192.168.11.2/24
 PrivateKey=SMt+/gxLsoxKpFQZDHEPr411Tyb97AKNdFVVWivPo0o=
 [Peer]
-Endpoint=10.49.165.37:17845
+Endpoint=<IP_ADDRESS_OF_GW>:17845
 PublicKey=xnJhZ+xPZhQDROaSlV7gftIEigeVPJlN8gZgAMYPiX4=
 AllowedIPs=192.168.11.0/24,172.16.11.0/24,172.16.12.0/24, 172.16.14.0/24, 172.16.255.0/24, 172.16.1.0/24
 PersistentKeepalive = 30
