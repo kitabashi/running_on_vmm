@@ -101,6 +101,7 @@ command to copy /etc/hosts
 	but this version may not be available anymore from EPEL repository.
 
 	To install ansible version 2.7.10, please use python pip, do not use yum.
+
 		```
 		yum -y install epel-release
 		yum -y update
