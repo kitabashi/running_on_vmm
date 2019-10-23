@@ -75,25 +75,25 @@ You can create your own configuration for the junos devices, or use the followin
 ![create_ssh_key_node6](images/create_ssh_key_node6.png)
 3. copy the ssh-key to node0 .. node5 to allow passwordless ssh access from node6 
 ![copy_sshkey](images/copy_sshkey.png)
-command to copy ssh-key
+	command to copy ssh-key
 
 ```
-for i in {0..5}
-do
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@node${i}
-done
+	for i in {0..5}
+	do
+		ssh-copy-id -i ~/.ssh/id_rsa.pub root@node${i}
+	done
 ```
 
 4. Copy file /etc/hosts to node0 .. node5
 ![copy_etc_hosts](images/copy_etc_hosts.png)
 command to copy /etc/hosts
 
-	```
+```
 	for i in {0..5}
 	do
 		scp /etc/hosts root@node${i}:/etc/hosts
 	done 
-	```
+```
 ## Openstack and Contrail installation using ansible deployer
 1. For contrail 1910, please follow the [manual](https://www.juniper.net/documentation/en_US/contrail19/topics/concept/install-contrail-ocata-kolla-50.html)
 
@@ -102,7 +102,7 @@ command to copy /etc/hosts
 
 	To install ansible version 2.7.10, please use python pip, do not use yum.
 
-		```
+```
 		yum -y install epel-release
 		yum -y update
 		yum install git python-pip
@@ -110,7 +110,8 @@ command to copy /etc/hosts
 		yum -y remove PyYAML python-requests
 		pip install PyYAML requests
 		yum -y install sshpass
-		```
+```
+
 ![install_epel_release](images/install_epel_release.png)
 ![yum_update](images/yum_update.png)
 ![install_git_pip](images/install_git_pip.png)
