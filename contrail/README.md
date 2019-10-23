@@ -128,6 +128,7 @@ To install ansible version 2.7.10, please use python pip, do not use yum.
 ![vnc1](images/vnc1.png)
 ![vnc2](images/vnc2.png)
 ![vnc3](images/vnc3.png)
+![vnc4](images/vnc4.png)
 
 4. Enter contrail-ansible-deployer directory, and start the following command :
     - ansible-playbook -e orchestrator=openstack -i inventory/ playbooks/configure_instances.yml
