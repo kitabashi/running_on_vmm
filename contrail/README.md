@@ -31,21 +31,21 @@ subnets in the testbed
 - management: 172.16.14.0/24
 
 ##Setup the testbed
-1. Create yaml file for the lab topology, or you can use the following (lab.yaml)(lab.yaml)
-2. Create the topology using this (script)[https://github.com/m1r24n/running_on_vmm] to create the configuration files and upload them into the VMM pod
-!(create_config)[images/create_config.png)
+1. Create yaml file for the lab topology, or you can use the following [lab.yaml](lab.yaml)
+2. Create the topology using this [script](https://github.com/m1r24n/running_on_vmm) to create the configuration files and upload them into the VMM pod
+![create_config](images/create_config.png)
 3. Start the topology using the same script
-!(start_config)[images/start_config.png)
+![start_config](images/start_config.png)
 4. Record the IP address of GW assigned by VMM
-!(IP_GW)[images/IP_GW.png)
+![IP_GW](images/IP_GW.png)
 5. Wait for few minutes to allow the VMs to be up and running
 6. SSH into GW and verify that all nodes are up and running
-!(ping1.png)[ping1.png)
-7. (optionally) install wireguard to have direct access to node from your workstation. Follow this (instruction)[https://github.com/m1r24n/running_on_vmm/tree/master/install_wg_on_vmm) on how to install wireguard on VM inside the VMM.
+![ping1.png](ping1.png)
+7. (optionally) install wireguard to have direct access to node from your workstation. Follow this [instruction](https://github.com/m1r24n/running_on_vmm/tree/master/install_wg_on_vmm) on how to install wireguard on VM inside the VMM.
 8. Establish VPN connection from your workstation to GW
 9. Test direct access into the nodes
 
 ## Install configuration for junos devices
-You can create your own configuration for the junos devices, and use the (junos_config)(junos_config/) for IP fabric configuration of the junos devices.
+You can create your own configuration for the junos devices, and use the [junos_config](junos_config/) for IP fabric configuration of the junos devices.
 
 ## Prepare the nodes for contrail installation
