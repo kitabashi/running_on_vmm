@@ -73,25 +73,63 @@ You can create your own configuration for the junos devices, or use the followin
     ```
 2. create ssh-key on node6
 ![create_ssh_key_node6](images/create_ssh_key_node6.png)
-3. copy the ssh-key to node1 .. node6 to allow passwordless ssh access from node6 
+3. copy the ssh-key to node0 .. node5 to allow passwordless ssh access from node6 
 ![copy_sshkey](images/copy_sshkey.png)
 command to copy ssh-key
 
 ```
-for i in {1..6}
+for i in {0..5}
 do
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@node${i}
 done
 ```
 
-4. Copy file /etc/hosts to node1 .. node6
+4. Copy file /etc/hosts to node0 .. node5
 ![copy_etc_hosts](images/copy_etc_hosts.png)
 command to copy /etc/hosts
 
 	```
-	for i in {1..6}
+	for i in {0..5}
 	do
 		scp /etc/hosts root@node${i}:/etc/hosts
 	done 
 	```
+## Openstack and Contrail installation using ansible deployer
+1. For contrail 1910, please follow the [manual](https://www.juniper.net/documentation/en_US/contrail19/topics/concept/install-contrail-ocata-kolla-50.html)
 
+The documentation mention that the ansible version required is 2.7.10. 
+but this version may not be available anymore from EPEL repository.
+To install ansible version 2.7.10, please use python pip, do not use yum.
+
+    ```
+    yum -y install epel-release
+    yum -y update
+    yum install git python-pip
+    pip install ansible==2.7.10
+    yum -y remove PyYAML python-requests
+    pip install PyYAML requests
+    yum -y install sshpass
+    ```
+
+![install_epel_release](images/install_epel_release.png)
+![yum_update](images/yum_update.png)
+![install_git_pip](images/install_git_pip.png)
+![install_ansible](images/install_ansible.png)
+![remove_pyyaml_request](images/remove_pyyaml_request.png)
+![install_pyyaml_request](images/install_pyyaml_request.png)
+
+2. Upload the ansible deployer file into node6 and unzip the file
+3. Upload this file [instances.yaml](instances.yaml) to node6, and put it inside directory `contrail-ansible-deployer/config
+![upload2.png](images/upload2.png)
+![unzip_copy.png](images/unzip_copy.png)
+
+4. Get the vga_port of VM node6, and use this information (host and port number) to open VNC session to the console of node6 (using this method to run the playbooks, allow you to disconnect remote access session, and leave the playbook run until it finish)
+![get_vga](images/get_vga.png)
+![vnc1](images/vnc1.png)
+![vnc2](images/vnc2.png)
+![vnc3](images/vnc3.png)
+
+4. Enter contrail-ansible-deployer directory, and start the following command :
+    - ansible-playbook -e orchestrator=openstack -i inventory/ playbooks/configure_instances.yml
+    - ansible-playbook -i inventory/ playbooks/install_openstack.yml
+    - ansible-playbook -e orchestrator=openstack -i inventory/ playbooks/install_contrail.yml

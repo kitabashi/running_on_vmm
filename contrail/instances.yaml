@@ -1,0 +1,143 @@
+---
+# Contrail inventory section
+global_configuration:
+  ENABLE_DESTROY: True
+  CONTAINER_REGISTRY: hub.juniper.net/contrail
+  CONTAINER_REGISTRY_USERNAME: <username>
+  CONTAINER_REGISTRY_PASSWORD: <password>
+provider_config:
+  bms:
+    ssh_user: root
+    ssh_pwd: pass01
+    ntpserver: ntp.juniper.net
+    domainsuffix: testbed.com
+    ssh_public_key: /root/.ssh/id_rsa.pub
+    ssh_private_key: /root/.ssh/id_rsa
+instances:
+  node0:
+    ip: 172.16.11.10
+    provider: bms
+    roles:
+      config:
+      config_database:
+      control:
+      webui:
+      analytics:
+      analytics_database:
+      analytics_alarm:
+      analytics_snmp:
+      openstack:
+  node1:
+    ip: 172.16.11.11
+    provider: bms
+    roles:
+      vrouter:
+      openstack_compute:
+  node2:
+    ip: 172.16.11.12
+    provider: bms
+    roles:
+      vrouter:
+      openstack_compute:
+  node3:
+    ip: 172.16.11.13
+    provider: bms
+    roles:
+      vrouter:
+          TSN_EVPN_MODE: true
+
+contrail_configuration:
+  CONTRAIL_VERSION: 1910.23
+  CLOUD_ORCHESTRATOR: openstack
+  ENCAP_PRIORITY: MPLSoUDP,MPLSoGRE,VXLAN
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  CONFIG_DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
+  UPGRADE_KERNEL: true
+  CONTROL_NODES: 172.16.11.10
+  CONTROLLER_NODES: 172.16.11.10
+  OPENSTACK_NODES: 172.16.11.10
+  JVM_EXTRA_OPTS: "-Xms1g -Xmx2g"
+kolla_config:
+  kolla_globals:
+    openstack_release: queens
+    enable_haproxy: no
+    enable_ironic: no
+    enable_swift: no
+  kolla_passwords:
+    keystone_admin_password: pass01
+    metadata_secret: pass01
+
+# Appformix inventory section
+all:
+  children:
+    appformix_controller:
+      hosts:
+        172.16.11.14:
+          ansible_connection: ssh
+          ansible_ssh_user: root
+          ansible_sudo_pass: pass01
+    openstack_controller:
+      hosts:
+        172.16.11.10:
+          ansible_connection: ssh
+          ansible_ssh_user: root
+          ansible_sudo_pass: pass01
+    compute:
+      hosts:
+        #List IP addresses of Contrail roles to be monitored here
+        172.16.11.11:
+          ansible_connection: ssh
+          ansible_ssh_user: root
+          ansible_sudo_pass: pass01
+        172.16.11.12:
+          ansible_connection: ssh
+          ansible_ssh_user: root
+          ansible_sudo_pass: pass01
+        172.16.11.13:
+          ansible_connection: ssh
+          ansible_ssh_user: root
+          ansible_sudo_pass: pass01
+#     bare_host:
+#       hosts:
+#         <ip-address>:
+#           ansible_connection: ssh
+#           ansible_ssh_user: <ssh-user>
+#           ansible_sudo_pass: <sudo-password>
+#         #If host is local
+#         <ip-address>:
+#           ansible_connection: local
+  vars:
+    openstack_username: admin
+    openstack_password: pass01
+    openstack_tenant_name: admin
+    openstack_auth_url: http://172.16.11.10:5000/v3
+    appformix_docker_images:
+      - /root/appformix/appformix-platform-images-3.1.6.tar.gz
+      - /root/appformix/appformix-dependencies-images-3.1.6.tar.gz
+      - /root/appformix/appformix-network_device-images-3.1.6.tar.gz
+      - /root/appformix/appformix-openstack-images-3.1.6.tar.gz
+    openstack_platform_enabled: true
+    # appformix_license: /opt/software/openstack_appformix/<appformix-contrail-license-file>.sig
+    appformix_license: /root/appformix/appformix-internal-openstack-3.1.sig
+    appformix_docker_registry: registry.appformix.com/
+    appformix_version: 3.1.6      #Must be 2.18.x or above
+    appformix_plugins: '{{ appformix_contrail_factory_plugins }} + {{ appformix_network_device_factory_plugins }} + {{ appformix_openstack_factory_plugins }}'
+    appformix_kvm_instance_discovery: true
+    # For enabling pre-requisites for package installation
+    appformix_network_device_monitoring_enabled: true
+    appformix_aggregate_openstack_controller: false
+    # For running the appformix-network-device-adapter
+    network_device_discovery_enabled: true
+    appformix_remote_host_monitoring_enabled: true
+    appformix_jti_network_device_monitoring_enabled: true
+    contrail_cluster_name: 'Contrail_Cluster'
+    contrail_analytics_url: 'http://172.16.11.10:8081'
+    contrail_config_url: 'http://172.16.11.10:8082'
+    # Defaults overwritten below were defined in roles/appformix_defaults/defaults/main.yml
+    appformix_ssl_enabled: false
+    appformix_scale_setup_flag: false
+    appformix_datamanager_port_http: "{{ (appformix_scale_setup_flag|bool) | ternary(28200, 8200) }}"
+    appformix_datamanager_port_https: "{{ (appformix_scale_setup_flag|bool) | ternary(28201, 8201) }}"
+    appformix_haproxy_datamanager_port_http: 8200
+    appformix_haproxy_datamanager_port_https: 8201
