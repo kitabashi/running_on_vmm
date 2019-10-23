@@ -123,7 +123,7 @@ To install ansible version 2.7.10, please use python pip, do not use yum.
 ![upload2.png](images/upload2.png)
 ![unzip_copy.png](images/unzip_copy.png)
 
-4. Get the vga_port of VM node6, and use this information (host and port number) to open VNC session to the console of node6 (using this method to run the playbooks, allow you to disconnect remote access session, and leave the playbook run until it finish)
+4. Get the vga_port of VM node6, and use this information (host and port number) to open VNC session to the console of node6 (using this method to run the playbooks, allow you to disconnect remote access session, and leave the playbook run until it finish). It may take 30 to 60 minutes to install.
 ![get_vga](images/get_vga.png)
 ![vnc1](images/vnc1.png)
 ![vnc2](images/vnc2.png)
