@@ -160,10 +160,10 @@ The documentation is available [here](https://www.juniper.net/documentation/en_U
 
 1. Upload the [command_servers.yml](command_servers.yml) to node6
 2. Install docker into node6
-[install_docker](images/install_docker.png)
+![install_docker](images/install_docker.png)
 2. Login into hub.juniper.net
 3. Pull contrail command deployer container
-[login_to_jnpr](images/login_to_jnpr.png)
+![login_to_jnpr](images/login_to_jnpr.png)
 4. Install contrail command and import the existing cluster with the following command:
     ```
     docker run -t --net host -e orchestrator=openstack -e action=import_cluster -v $PWD/command_servers.yml:/command_servers.yml -v $PWD/instances.yaml:/instances.yml -d --privileged --name contrail_command_deployer hub.juniper.net/contrail/contrail-command-deployer:1910.23
