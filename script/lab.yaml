@@ -2,7 +2,7 @@
 name: dvmx
 vmm_pod:
     server: q-pod13-vmm.englab.juniper.net
-    user: irzan
+    user: <your_user>
     password: <your_password>
     image:
         centos: centos7.6.img
