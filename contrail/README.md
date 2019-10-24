@@ -143,10 +143,30 @@ command to copy /etc/hosts
 1. ssh into the compute nodes, and install libvirt-client
 ![appformix0](images/appformix0.png)
 2. On deployer node, create directory ~/appformix, and upload the appformix installation files and license into this directory.
-![appformix1](images/appformix1.png)
+![appformix1](images/appformix1a.png)
+![appformix1](images/appformix1b.png)
+![appformix1](images/appformix1c.png)
 3. The yaml file for appformix installation is part of the [instances.yaml](instances.yaml)
+![appformix1](images/appformix1d.png)
 4. Extract appformix installation file, and enter the directory where the extracted file is located.
 ![appformix2](images/appformix2.png)
 5. Run the playbook to install appformix
 ![appformix3](images/appformix3.png)
-6. Appformix installation is done. It can be verified by accessing the appformix dashboard, http://172.16.11.15)
+6. Appformix installation is done. It can be verified by accessing the appformix dashboard, http://172.16.11.14:9000)
+
+## Contrail Command installation and importing the existing cluster into the contrail command
+
+The documentation is available [here](https://www.juniper.net/documentation/en_US/contrail19/topics/task/configuration/import-cluster-data-contrail-command.html)
+
+1. Upload the [command_servers.yml](command_servers.yml) to node6
+2. Install docker into node6
+[install_docker](images/install_docker.png)
+2. Login into hub.juniper.net
+3. Pull contrail command deployer container
+[login_to_jnpr](images/login_to_jnpr.png)
+4. Install contrail command and import the existing cluster with the following command:
+    ```
+    docker run -t --net host -e orchestrator=openstack -e action=import_cluster -v $PWD/command_servers.yml:/command_servers.yml -v $PWD/instances.yaml:/instances.yml -d --privileged --name contrail_command_deployer hub.juniper.net/contrail/contrail-command-deployer:1910.23
+    ```
+[import_cc](images/import_cc.png)
+5. When the installation is finish, contrail command can be accessed at https://172.16.11.15:9001
