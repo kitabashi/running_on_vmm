@@ -169,5 +169,6 @@ The documentation is available [here](https://www.juniper.net/documentation/en_U
     docker run -t --net host -e orchestrator=openstack -e action=import_cluster -v $PWD/command_servers.yml:/command_servers.yml -v $PWD/instances.yaml:/instances.yml -d --privileged --name contrail_command_deployer hub.juniper.net/contrail/contrail-command-deployer:1910.23
     ```
 ![import_cc](images/import_cc.png)
+![install_done](images/install_done.png)
 5. When the installation is finish, contrail command can be accessed at https://172.16.11.15:9001
 6. Now the installation of openstack, contrail networking, appformix and contrail command is done. You can start playing around with it.
