@@ -48,8 +48,24 @@ subnets in the testbed
 9. Test direct access into the nodes from your workstation
 ![ping2](images/ping2.png)
 
-## Install configuration for junos devices
-You can create your own configuration for the junos devices, or use the following example of [junos_config](junos_config/) for IP fabric configuration of the junos devices.
+## IP Fabric configuration
+the DC fabric consist of vQFX (spine1, spine2, leaf1 and leaf2) and GW.
+
+You can create your own configuration for the junos devices, or use the following example of [junos_config](junos_config/) and [quagga config for GW](quagga_config/).
+
+The IP fabric configuration is BGP routing protocol for underlay.
+
+### Installing quagga on GW
+1. Install guagga on GW
+!(install_quagga)[images/install_quagga.png]
+2. create (initial configuration)[quagga_config](quagga_config/bgpd.conf) for bgpd, and start zebra and bgpd services on GW. 
+3. Verify that GW has received bgp information from VMX 
+!(bgp_on_gw)[images/bgp_on_gw.png]
+4. Verify that junos devices (vmx, spine1, spine2, leaf1, leaf2) has received bgp information from GW
+!(bgp_on_vmx)[images/bgp_on_vmx.png]
+5. From node0, verify connectivity to junos devices in the IP Fabric
+!(node0_ping)[images/node0_ping.png)
+
 
 ## Initial nodes configuration 
 1. Access node6 (deployer node), and verify the following on node6
