@@ -85,8 +85,8 @@ The IP fabric configuration is BGP routing protocol for underlay.
 	172.16.255.0    vmx
 	172.16.255.1    spine1
 	172.16.255.2    spine2
-	172.16.255.3    spine3
-	172.16.255.4    spine4
+	172.16.255.3    leaf1
+	172.16.255.4    leaf2
     ```
 2. create ssh-key on node6
 ![create_ssh_key_node6](images/create_ssh_key_node6.png)
