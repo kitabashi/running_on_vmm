@@ -189,4 +189,4 @@ The documentation is available [here](https://www.juniper.net/documentation/en_U
 
 5. When the installation is finish, contrail command can be accessed at https://172.16.11.15:9091.
 
-6. Now the installation of openstack, contrail networking, appformix and contrail command is done. You can start playing around with it or you can follow the following [lab exercise](https://github.com/m1r24n/running_on_vmm/tree/master/contrail/contrail_lab_exercise)
+6. Now the installation of openstack, contrail networking, appformix and contrail command is done. You can start playing around with it or you can use the following [lab exercise](https://github.com/m1r24n/running_on_vmm/tree/master/contrail/contrail_lab_exercise)
