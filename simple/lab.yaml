@@ -2,7 +2,7 @@
 name: simple
 vmm_pod:
     server: q-pod08-vmm.englab.juniper.net
-    user: irzan
+    user: <your_username>
     password: <your_password>
     image:
         centos: centos80g.img
