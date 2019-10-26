@@ -8,12 +8,12 @@ In this exercise, the following tasks will be done
 2. download cloud images for the following image
     - cirros, https://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
     - ubuntu, https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
-    - centos, https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-1907.qcow2c
+    - centos, https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2c 
 ![download_images](images/download_images.png)
 3. Create the following shell script (to upload image, create flavors and projects)
 	```
 	openstack image create --disk-format qcow2 --container-format bare --public --file bionic-server-cloudimg-amd64.img ubuntu1804
-	openstack image create --disk-format qcow2 --container-format bare --public --file CentOS-7-x86_64-GenericCloud-1901.qcow2c centos7
+	openstack image create --disk-format qcow2 --container-format bare --public --file CentOS-7-x86_64-GenericCloud.qcow2c centos7
 	openstack image create --disk-format qcow2 --container-format bare --public --file cirros-0.4.0-x86_64-disk.img cirros
 	openstack project create demo1
 	openstack project create demo2
