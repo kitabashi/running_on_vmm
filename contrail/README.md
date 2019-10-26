@@ -57,14 +57,14 @@ The IP fabric configuration is BGP routing protocol for underlay.
 
 ### Installing quagga on GW
 1. Install guagga on GW
-!(install_quagga)[images/install_quagga.png]
-2. create (initial configuration)[quagga_config](quagga_config/bgpd.conf) for bgpd, and start zebra and bgpd services on GW. 
+![install_quagga](images/install_quagga.png)
+2. create initial configuration [quagga config](quagga_config/bgpd.conf) for bgpd, and start zebra and bgpd services on GW. 
 3. Verify that GW has received bgp information from VMX 
-!(bgp_on_gw)[images/bgp_on_gw.png]
+![bgp_on_gw](images/bgp_on_gw.png)
 4. Verify that junos devices (vmx, spine1, spine2, leaf1, leaf2) has received bgp information from GW
-!(bgp_on_vmx)[images/bgp_on_vmx.png]
+![bgp_on_vmx](images/bgp_on_vmx.png)
 5. From node0, verify connectivity to junos devices in the IP Fabric
-!(node0_ping)[images/node0_ping.png)
+![node0_ping](images/node0_ping.png)
 
 
 ## Initial nodes configuration 
