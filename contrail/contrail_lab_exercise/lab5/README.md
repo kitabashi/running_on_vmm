@@ -20,7 +20,7 @@ Steps :
     - connected networks : Blue, Red
    click `create`
 ![lab5e](images/lab5e.png)
-9. Access spine1 or spine2 to verify that logical R1 has been create for VxLAN routing
+9. Access spine1 or spine2 to verify that logical R1 has been created for VxLAN routing
 10. From `svr2`, verify that it can reach `VM1`, `VM2` and `svr1`
 ![lab5f](images/lab5f.png)
 11. From `svr1`, verify that it can reach `VM3`, `VM4` and `svr2`
