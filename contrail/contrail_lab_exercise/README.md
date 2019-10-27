@@ -3,3 +3,4 @@
 ## [Discovering DC Fabric](lab2/)
 ## [Configuring virtual networks and virtual machine](lab3/)
 ## [Extending VN to TOR and attaching BMS](lab4/)
+## [Configuring InterVN routing](lab5/)
