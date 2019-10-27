@@ -35,3 +35,4 @@ In this exercise, the following tasks will be done
 6. Verify that images has been uploaded, projecst and flavors has been created.
     ![kolla_toolbox3](images/kolla_toolbox3.png)
     ![kolla_toolbox4](images/kolla_toolbox4.png)
+7. You can also access [Contrail command dashboard](https://172.16.11.15:9091), [openstack dashboard](http://172.16.11.10) and [Contrail Dashboard](http://172.16.11.10:8180)
