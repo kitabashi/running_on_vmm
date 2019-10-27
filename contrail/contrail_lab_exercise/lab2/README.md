@@ -40,3 +40,4 @@ Steps
 ![fabric11](images/fabric11.png)
 ![fabric12](images/fabric12.png)
 18. DC Fabric discovery process is done. The topology of the fabric can be displayed on topology view (the link between devices may take time to appear)
+![fabric13](images/fabric13.png)
