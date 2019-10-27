@@ -3,6 +3,8 @@ In this lab exercise, virtual network will be created and virtual machines will 
 
 Steps
 1. Access [contrail command dashboard](https://172.16.11.15:9091)
+2. Select project `Demo1`
+![lab3](images/lab3.png)
 2. From menu, select `Overlay` > `Virtual Networks` and click `Create`
 3. Create virtual network with the following parameters
     - name : Blue
