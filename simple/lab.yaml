@@ -1,8 +1,8 @@
 ---
 name: simple
 vmm_pod:
-    server: q-pod08-vmm.englab.juniper.net
-    user: <your_username>
+    server: q-pod22-vmm.englab.juniper.net
+    user: <your user>
     password: <your_password>
     image:
         centos: centos80g.img
@@ -23,7 +23,7 @@ vm:
           em1: [mgmt,172.16.10.1/24]
     pc1:
         type: pcsmall
-        os: ubuntu
+        os: centos
         interfaces:
           em0: [mgmt,172.16.10.11/24,172.16.10.1]
           em1: lan1a
@@ -75,13 +75,13 @@ vm:
           xe-0/0/2: lan4b
     pc3:
         type: pcsmall
-        os: ubuntu
+        os: centos
         interfaces:
           em0: [mgmt,172.16.10.13/24,172.16.10.1]
           em1: lan5a
     pc4:
         type: pcsmall
-        os: ubuntu
+        os: centos
         interfaces:
           em0: [mgmt,172.16.10.14/24,172.16.10.1]
           em1: lan5b

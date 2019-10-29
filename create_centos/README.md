@@ -48,7 +48,7 @@ The following steps is used to create VMM image from Centos Cloud Image.
 - change the password for user `root`
 - remove `cloud-init` application from the system
 ![login2](images/login2.png)
-10. On centos7, a new naming scheme for network interface is introduced. Instead of using `eth`, it uses the driver name for the network interface name.![new_name_interface](new_name_interface.png)
+10. On centos7, a new naming scheme for network interface is introduced. Instead of using `eth`, it uses the driver name for the network interface name.![new_name_interface](images/new_name_interface.png)
 11. To revert back to the legacy naming of interfaces like `eth0`, `eth1`, `eth2`, etc, then additional parameter need to be added during kernel boot process, and this is done by modifying the grub configuration file which will be read during the boot-up process.
 12. Edit file /etc/default/grub and add net.ifnames=0 biosdevname=0 to line GRUB_CMDLINE_LINUX
 ![edit_grub_default](images/edit_grub_default.png)
