@@ -122,7 +122,7 @@ command to copy /etc/hosts
 ```
 		yum -y install epel-release
 		yum -y update
-		yum install git python-pip
+		yum -y install git python-pip
 		pip install ansible==2.7.10
 		yum -y remove PyYAML python-requests
 		pip install PyYAML requests
