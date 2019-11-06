@@ -82,7 +82,7 @@ The IP fabric configuration is BGP routing protocol for underlay.
 	172.16.11.14    node4
 	172.16.11.15    node5
 	172.16.11.16    node6
-	172.16.255.0    vmx
+	172.16.255.0    sdngw
 	172.16.255.1    spine1
 	172.16.255.2    spine2
 	172.16.255.3    leaf1

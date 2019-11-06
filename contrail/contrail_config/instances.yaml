@@ -5,6 +5,7 @@ global_configuration:
   CONTAINER_REGISTRY: hub.juniper.net/contrail
   CONTAINER_REGISTRY_USERNAME: <username>
   CONTAINER_REGISTRY_PASSWORD: <password>
+
 provider_config:
   bms:
     ssh_user: root
@@ -49,11 +50,11 @@ instances:
 contrail_configuration:
   CONTRAIL_VERSION: 1910.23
   CLOUD_ORCHESTRATOR: openstack
-  ENCAP_PRIORITY: MPLSoUDP,MPLSoGRE,VXLAN
+  ENCAP_PRIORITY: VXLAN,MPLSoUDP,MPLSoGRE
+  UPGRADE_KERNEL: false
   CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 2
   DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
   CONFIG_DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 2
-  UPGRADE_KERNEL: true
   CONTROL_NODES: 172.16.11.10
   CONTROLLER_NODES: 172.16.11.10
   OPENSTACK_NODES: 172.16.11.10

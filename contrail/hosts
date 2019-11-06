@@ -1,0 +1,15 @@
+127.0.0.1       localhost.localdomain localhost
+::1             localhost6.localdomain6 localhost6
+172.16.11.1     gw
+172.16.11.10    node0
+172.16.11.11    node1
+172.16.11.12    node2
+172.16.11.13    node3
+172.16.11.14    node4
+172.16.11.15    node5
+172.16.11.16    node6
+172.16.255.0    vmx
+172.16.255.1    spine1
+172.16.255.2    spine2
+172.16.255.3    leaf1
+172.16.255.4    leaf2

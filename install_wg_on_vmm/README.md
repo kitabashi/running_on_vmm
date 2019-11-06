@@ -25,14 +25,14 @@ The following are the screeshot
 GW Configuration
 ```
 [Interface]
-Address=192.168.11.1/24
+Address=192.168.13.1/24
 ListenPort=17845
 PrivateKey=wAng4a6Zf+rGl25B4KX/CkBi3ffd7SgNBKAvuVDAqGo=
 
 [Peer]
 #irzan's MBP
 PublicKey=SUX6Dd0JGa53T4bWWGrz7x40S+O0E/aMhpdCVY13PBg=
-AllowedIPs=192.168.11.2/32
+AllowedIPs=192.168.13.2/32
 PersistentKeepalive=30
 ```
 6. Change the /etc/wireguard directory to be accessible only by root
@@ -44,12 +44,12 @@ PersistentKeepalive=30
 Client configuration
 ```
 [Interface]
-Address=192.168.11.2/24
+Address=192.168.13.2/24
 PrivateKey=SMt+/gxLsoxKpFQZDHEPr411Tyb97AKNdFVVWivPo0o=
 [Peer]
 Endpoint=<IP_ADDRESS_OF_GW>:17845
 PublicKey=xnJhZ+xPZhQDROaSlV7gftIEigeVPJlN8gZgAMYPiX4=
-AllowedIPs=192.168.11.0/24,172.16.11.0/24,172.16.12.0/24, 172.16.14.0/24, 172.16.255.0/24, 172.16.1.0/24
+AllowedIPs=192.168.13.0/24,172.16.11.0/24,172.16.12.0/24, 172.16.14.0/24, 172.16.255.0/24, 172.16.1.0/24
 PersistentKeepalive = 30
 ```
 9. Activate the connection and verify that  connection is established

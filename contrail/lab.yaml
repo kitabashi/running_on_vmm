@@ -2,10 +2,10 @@
 name: contrail
 vmm_pod:
     server: q-pod13-vmm.englab.juniper.net
-    user: <your_user>
-    password: <your_password>
+    user: <user>
+    password: <password>
     image:
-        centos: centos80g.img
+        centos: centos300g.img
         ubuntu: ubuntu100g.img
         vmx_re: vmx-19.3R1.8/junos-vmx-x86-64-19.3R1.8.vmdk
         vmx_mpc: vmx-19.3R1.8/vFPC-20190819.vmdk
@@ -21,8 +21,8 @@ vm:
         interfaces:
           em0: external
           em1: [lan1,172.16.11.1/24]
-          em2: [vmxg0,172.16.12.0/31]
-          em3: [vmxg1,172.16.12.2/31]
+          em2: [sdngwg0,172.16.12.0/31]
+          em3: [sdngwg1,172.16.12.2/31]
           em4: [mgmt,172.16.14.1/24]
     node0:
         type: pcbig
@@ -84,29 +84,30 @@ vm:
         os: centos
         interfaces:
           em0: [mgmt,172.16.14.14/24]
-          em1: vmxg4
+          em1: sdngwg4
     ext1l3:
         type: pcsmall
         os: centos
         interfaces:
           em0: [mgmt,172.16.14.15/24]
-          em1: vmxg5
-    vmx1:
+          em1: sdngwg5
+    sdngw:
         type: junos
         os: vmx
         interfaces:
           fxp0: [mgmt,172.16.14.30/24]
-          ge-0/0/0: vmxg0
-          ge-0/0/1: vmxg1 
-          ge-0/0/2: vmxg2
-          ge-0/0/3: vmxg3
-          ge-0/0/4: vmxg4
+          ge-0/0/0: sdngwg0
+          ge-0/0/1: sdngwg1 
+          ge-0/0/2: sdngwg2
+          ge-0/0/3: sdngwg3
+          ge-0/0/4: sdngwg4
+          ge-0/0/5: sdngwg5
     spine1:
         type: junos
         os: vqfx
         interfaces:
           em0: [mgmt,172.16.14.31/24]
-          xe-0/0/0: vmxg2
+          xe-0/0/0: sdngwg2
           xe-0/0/1: s1l1 
           xe-0/0/2: s1l2
     spine2:
@@ -114,7 +115,7 @@ vm:
         os: vqfx
         interfaces:
           em0: [mgmt,172.16.14.32/24]
-          xe-0/0/0: vmxg3
+          xe-0/0/0: sdngwg3
           xe-0/0/1: s2l1
           xe-0/0/2: s2l2
     leaf1:
