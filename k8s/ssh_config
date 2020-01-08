@@ -1,5 +1,5 @@
 host vmmgw
-    hostname 10.49.224.216
+    hostname <ip address>
     user root
 	IdentityFile ~/.ssh/id_rsa
 host node0
