@@ -11,6 +11,8 @@ vmm_pod:
         vmx_mpc: vmx-19.3R1.8/vFPC-20190819.vmdk
         vqfx_re: vqfx/jinstall-vqfx-10-f-17.3R3-S2.2.vmdk
         vqfx_cosim: vqfx/cosim-2018-02-12.vmdk
+        evo_re:
+        evo_cosim:
     junos_login:
         login: admin
         password: pass01

@@ -1,0 +1,8 @@
+- name: install docker
+  hosts: all
+  tasks:
+    - name: upload install-docker.sh
+      copy: src=source/install-docker.sh dest=~/install-docker.sh
+    - name: install docker
+      command: "sh /home/ubuntu/install-docker.sh"
+      become: yes

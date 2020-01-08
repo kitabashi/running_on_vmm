@@ -384,6 +384,7 @@ def write_vsrx_config(d1,i):
 
 def write_pc_config_to_file(d1):
 	print("writing pc conf")
+	hosts_file=['127.0.0.1	localhost.localdomain localhost','::1		localhost6.localdomain6 localhost6']
 	for i in d1['vm'].keys():
 		if d1['vm'][i]['type'] != 'junos':
 			f1=param1.tmp_dir + "hostname." + i
@@ -391,18 +392,21 @@ def write_pc_config_to_file(d1):
 	for i in d1['vm'].keys():
 		if d1['vm'][i]['type'] != 'junos':
 			if d1['vm'][i]['os']=='centos':
-				line1=[]
 				for j in d1['vm'][i]['interfaces']:
+					line1=[]
 					if isinstance(d1['vm'][i]['interfaces'][j],list):
-						line1=['TYPE=Ethernet','BOOTPROTO=static','ONBOOT=yes']
 						intf=j.replace('em','eth')
 						line1.append('NAME=' + intf)
 						line1.append('DEVICE='+intf)
-						line1.append('IPADDR=' + d1['vm'][i]['interfaces'][j][1].split('/')[0])
-						line1.append('NETMASK=' + prefix2netmask(d1['vm'][i]['interfaces'][j][1].split('/')[1]))
-						if(len(d1['vm'][i]['interfaces'][j])==3):
-							line1.append('GATEWAY=' + d1['vm'][i]['interfaces'][j][2])
-							
+						if d1['vm'][i]['interfaces'][j][1].split('/')[0] == '0.0.0.0':
+							line1.extend(['TYPE=Ethernet','BOOTPROTO=dhcp','ONBOOT=no'])
+						else:
+							line1.extend(['TYPE=Ethernet','BOOTPROTO=static','ONBOOT=yes'])
+							line1.append('IPADDR=' + d1['vm'][i]['interfaces'][j][1].split('/')[0])
+							line1.append('NETMASK=' + prefix2netmask(d1['vm'][i]['interfaces'][j][1].split('/')[1]))
+							if(len(d1['vm'][i]['interfaces'][j])==3):
+								line1.append('GATEWAY=' + d1['vm'][i]['interfaces'][j][2])
+								hosts_file.append(d1['vm'][i]['interfaces'][j][1].split('/')[0] + ' ' + i)
 						f1=param1.tmp_dir + "ifcfg-" + intf + "." + i
 						write_to_file(f1,line1)
 			elif d1['vm'][i]['os']=='ubuntu':
@@ -412,15 +416,20 @@ def write_pc_config_to_file(d1):
 				for j in d1['vm'][i]['interfaces']:
 					if isinstance(d1['vm'][i]['interfaces'][j],list):
 						intf=j.replace('em','eth')
-						line1.append("auto " + intf)
-						line1.append("iface " + intf + " inet static")
-						line1.append("    address " + d1['vm'][i]['interfaces'][j][1].split('/')[0])
-						line1.append("    netmask " + prefix2netmask(d1['vm'][i]['interfaces'][j][1].split('/')[1]))
-						if(len(d1['vm'][i]['interfaces'][j])==3):
-							line1.append('   gateway ' + d1['vm'][i]['interfaces'][j][2])
+						if d1['vm'][i]['interfaces'][j    ][1].split('/')[0] == '0.0.0.0':
+							line1.append("iface " + intf + " inet dhcp")
+						else:	
+							line1.append("auto " + intf)
+							line1.append("iface " + intf + " inet static")
+							line1.append("    address " + d1['vm'][i]['interfaces'][j][1].split('/')[0])
+							line1.append("    netmask " + prefix2netmask(d1['vm'][i]['interfaces'][j][1].split('/')[1]))
+							if(len(d1['vm'][i]['interfaces'][j])==3):
+								line1.append('   gateway ' + d1['vm'][i]['interfaces'][j][2])
+								line1.append('   dns-nameservers 10.49.0.4 10.49.0.37 ')
+								hosts_file.append(d1['vm'][i]['interfaces'][j][1].split('/')[0] + ' ' + i)
 				f1=param1.tmp_dir + "interfaces." + i
 				write_to_file(f1,line1)
-
+	write_to_file(param1.tmp_dir + "hosts",hosts_file)
 
 def prefix2netmask(prefs):
 	i=0
@@ -501,10 +510,12 @@ def make_config_generic_pc(d1,i):
 	retval.append('   install "' + config_dir + "hostname." + i + '" "/etc/hostname";')
 	
 	if d1['vm'][i]['os'] == 'centos':
+		retval.append('   install "' + config_dir + "hosts" + '" "/etc/hosts";')
 		for j in d1['vm'][i]['interfaces'].keys():
 			if isinstance(d1['vm'][i]['interfaces'][j],list):
 				retval.append('   install "' + config_dir + "ifcfg-" + change_intf(j) + '.' + i + '" "/etc/sysconfig/network-scripts/ifcfg-' + change_intf(j) +  '";')
 	elif d1['vm'][i]['os'] == 'ubuntu':
+		retval.append('   install "' + config_dir + "hosts" + '" "/etc/hosts";')
 		retval.append('   install "' + config_dir + "interfaces." + i + '" "/etc/network/interfaces";')
 
 	return retval

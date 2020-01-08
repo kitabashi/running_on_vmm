@@ -1,0 +1,5 @@
+- name: Testing
+  hosts: all
+  tasks:
+    - name: upload file1.txt
+      copy: src=source/file1.txt dest=~/file1.txt

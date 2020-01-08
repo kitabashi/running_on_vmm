@@ -1,0 +1,50 @@
+---
+name: lab1 
+vmm_pod:
+    server: q-pod13-vmm.englab.juniper.net
+    user: <username>
+    password: <password>
+    image:
+        centos: centos300g.img
+        ubuntu: ubuntu160406.img
+        vmx_re: vmx-19.3R1.8/junos-vmx-x86-64-19.3R1.8.vmdk
+        vmx_mpc: vmx-19.3R1.8/vFPC-20190819.vmdk
+        vqfx_re: vqfx/jinstall-vqfx-10-f-17.3R3-S2.2.vmdk
+        vqfx_cosim: vqfx/cosim-2018-02-12.vmdk
+    junos_login:
+        login: admin
+        password: pass01
+vm:
+    gw:
+        type: gw
+        os: centos
+        interfaces:
+          em0: external
+          em1: [lan1,172.16.11.1/24]
+          em2: [lan2,172.16.12.1/24]
+          em3: [lan3,172.16.13.1/24]
+    node0:
+        type: pcbig
+        os: ubuntu
+        interfaces:
+          em0: [lan1,172.16.11.10/24,172.16.11.1]
+    node1:
+        type: pcbig
+        os: ubuntu
+        interfaces:
+          em0: [lan2,172.16.12.11/24,172.16.12.1]
+    node2:
+        type: pcbig
+        os: ubuntu
+        interfaces:
+          em0: [lan2,172.16.12.12/24,172.16.12.1]
+    node3:
+        type: pcbig
+        os: ubuntu
+        interfaces:
+          em0: [lan2,172.16.12.13/24,172.16.12.1]
+    node4:
+        type: pcbig
+        os: ubuntu
+        interfaces:
+          em0: [lan3,172.16.13.14/24,172.16.13.1]

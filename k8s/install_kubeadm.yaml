@@ -1,0 +1,29 @@
+- name: install kubeadm
+  hosts: k8s_node
+  tasks:
+    - name: install apt-transport-https curl
+      apt:
+        pkg:
+          - apt-transport-https 
+          - curl
+      become: yes
+    - name: upload for_kubeadm.sh
+      copy: src=source/for_kubeadm.sh dest=~/for_kubeadm.sh
+    - name: run for_kubeadm.sh
+      command: "sh /home/ubuntu/for_kubeadm.sh"
+      become: yes
+    - name: Update repository
+      apt:
+        update_cache: yes
+        upgrade: yes
+      become: yes
+    - name: install kubelet kubeadm kubectl
+      apt:
+        pkg:
+          - kubelet 
+          - kubeadm 
+          - kubectl
+      become: yes
+    - name: apt-mark
+      command: "apt-mark hold kubelet kubeadm kubectl"
+      become: yes

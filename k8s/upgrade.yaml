@@ -1,0 +1,11 @@
+- name: upgrade
+  hosts: all
+  tasks:
+    - name: Update repository
+      apt:
+        update_cache: yes
+        upgrade: yes
+      become: yes
+    - name: reboot
+      reboot:
+      become: yes

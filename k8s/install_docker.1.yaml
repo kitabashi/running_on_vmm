@@ -1,0 +1,11 @@
+- name: install docker
+  hosts: docker_host
+  tasks:
+    - name: upload get-docker.sh
+      copy: src=source/get-docker.sh dest=~/get-docker.sh
+    - name: install docker
+      command: "sh /home/ubuntu/get-docker.sh"
+      become: yes
+    - name: add user to docker group
+      command: "usermod -aG docker ubuntu"
+      become: yes

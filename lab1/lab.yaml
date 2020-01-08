@@ -1,0 +1,66 @@
+---
+name: lab1 
+vmm_pod:
+    server: q-pod13-vmm.englab.juniper.net
+    user: irzan
+    password: ^S4tU#6$
+    image:
+        centos: centos300g.img
+        ubuntu: ubuntu100g.img
+        vmx_re: vmx-19.3R1.8/junos-vmx-x86-64-19.3R1.8.vmdk
+        vmx_mpc: vmx-19.3R1.8/vFPC-20190819.vmdk
+        vqfx_re: vqfx/jinstall-vqfx-10-f-17.3R3-S2.2.vmdk
+        vqfx_cosim: vqfx/cosim-2018-02-12.vmdk
+        evo_re:
+        evo_cosim: ubuntu_vm_evo.qcow2
+    junos_login:
+        login: admin
+        password: pass01
+vm:
+    gw:
+        type: gw
+        os: centos
+        interfaces:
+          em0: external
+          em1: [mgmt,172.16.10.1/24]
+    svr1:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.11/24]
+          em1: vmx1g0
+          em2: vmx1g1
+    svr2:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.12/24]
+          em1: vmx2g0
+          em2: vmx2g1
+    vmx1:
+        type: junos
+        os: vmx
+        interfaces:
+          fxp0: [mgmt,172.16.14.13/24]
+          ge-0/0/0: vmx1g0
+          ge-0/0/1: vmx1g1
+          ge-0/0/2: wan1
+          ge-0/0/3: wan2
+    vmx2:
+        type: junos
+        os: vmx
+        interfaces:
+          fxp0: [mgmt,172.16.14.14/24]
+          ge-0/0/0: vmx2g0
+          ge-0/0/1: vmx2g1
+          ge-0/0/2: wan3
+          ge-0/0/3: wan4
+    evo1:
+        type: junos
+        os: evo
+        interfaces:
+          fxp0: [mgmt,172.16.14.15/24]
+          et-0/0/0: wan1
+          et-0/0/1: wan2
+          et-0/0/2: wan3
+          et-0/0/3: wan4

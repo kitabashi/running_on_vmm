@@ -1,0 +1,35 @@
+- name: install nfs client
+  hosts: k8s_node
+  tasks:
+    - name: install nfs client
+      apt:
+        pkg:
+          - nfs-common
+      become: yes
+- name: install nfs server
+  hosts: nfs_server
+  tasks:
+    - name: install nfs server
+      apt:
+        pkg:
+          - nfs-kernel-server
+      become: yes
+    - name: creating directory /nfs
+      file:
+        path: /nfs
+        group: nogroup
+        owner: nobody
+        state: directory
+      become: yes
+    - name: add /etc/exports
+      lineinfile:
+        path: /etc/exports
+        line: /nfs *(rw,sync,no_subtree_check)
+      become: yes
+    - name: restart nfs server
+      systemd:
+        state: restarted
+        daemon_reload: yes
+        name: nfs-kernel-server
+      become: yes
+
