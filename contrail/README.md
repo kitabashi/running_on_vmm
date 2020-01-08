@@ -162,7 +162,7 @@ command to copy /etc/hosts
 ![appformix1](images/appformix1a.png)
 ![appformix1](images/appformix1b.png)
 ![appformix1](images/appformix1c.png)
-3. The yaml file for appformix installation is part of the [instances.yaml](instances.yaml)
+3. The yaml file for appformix installation is part of the [instances.yaml](contrail_config/instances.yaml)
 ![appformix1](images/appformix1d.png)
 4. Extract appformix installation file, and enter the directory where the extracted file is located.
 ![appformix2](images/appformix2.png)
