@@ -21,9 +21,11 @@ vm:
         interfaces:
           em0: external
           em1: [lan1,172.16.11.1/24]
-          em2: [sdngwg0,172.16.12.0/31]
-          em3: [sdngwg1,172.16.12.2/31]
-          em4: [mgmt,172.16.14.1/24]
+          em2: [site1g0,172.16.12.0/31]
+          em3: [site1g1,172.16.12.2/31]
+          em4: [site2g0,172.16.22.0/31]
+          em5: [site2g1,172.16.22.2/31]
+          em6: [mgmt,172.16.14.1/24]
     node0:
         type: pcbig
         os: centos
@@ -59,81 +61,120 @@ vm:
         os: centos
         interfaces:
           em0: [lan1,172.16.11.16/24,172.16.11.1]
-    svr1:
+    site1svr1:
         type: pcsmall
         os: centos
         interfaces:
           em0: [mgmt,172.16.14.11/24]
-          em1: l1p2
-    svr2:
+          em1: [site1l1p2,0.0.0.0/0]
+    site1svr2:
         type: pcsmall
         os: centos
         interfaces:
           em0: [mgmt,172.16.14.12/24]
-          em1: l2p2
-          em2: l2p4
-    svr3:
+          em1: [site1l2p2,0.0.0.0/0]
+          em2: site1l2p4
+    site1svr3:
         type: pcsmall
         os: centos
         interfaces:
           em0: [mgmt,172.16.14.13/24]
-          em1: l1p3
-          em1: l2p3
-    ext1l2:
+          em1: site1l1p3
+          em1: site1l2p3
+    site1ext1l2:
         type: pcsmall
         os: centos
         interfaces:
           em0: [mgmt,172.16.14.14/24]
-          em1: sdngwg4
-    ext1l3:
+          em1: [site1g4,172.16.21.10/24,172.16.21.1]
+    site1ext1l3:
         type: pcsmall
         os: centos
         interfaces:
           em0: [mgmt,172.16.14.15/24]
-          em1: sdngwg5
-    sdngw:
+          em1: [site1g5,172.16.22.10/24,172.16.22.1]
+    site1:
         type: junos
         os: vmx
         interfaces:
           fxp0: [mgmt,172.16.14.30/24]
-          ge-0/0/0: sdngwg0
-          ge-0/0/1: sdngwg1 
-          ge-0/0/2: sdngwg2
-          ge-0/0/3: sdngwg3
-          ge-0/0/4: sdngwg4
-          ge-0/0/5: sdngwg5
-    spine1:
+          ge-0/0/0: site1g0
+          ge-0/0/1: site1g1 
+          ge-0/0/2: site1g2
+          ge-0/0/3: site1g3
+          ge-0/0/4: site1g4
+          ge-0/0/5: site1g5
+    site1spine1:
         type: junos
         os: vqfx
         interfaces:
           em0: [mgmt,172.16.14.31/24]
-          xe-0/0/0: sdngwg2
-          xe-0/0/1: s1l1 
-          xe-0/0/2: s1l2
-    spine2:
+          xe-0/0/0: site1g2
+          xe-0/0/1: site1s1l1 
+          xe-0/0/2: site1s1l2
+    site1spine2:
         type: junos
         os: vqfx
         interfaces:
           em0: [mgmt,172.16.14.32/24]
-          xe-0/0/0: sdngwg3
-          xe-0/0/1: s2l1
-          xe-0/0/2: s2l2
-    leaf1:
+          xe-0/0/0: site1g3
+          xe-0/0/1: site1s2l1
+          xe-0/0/2: site1s2l2
+    site1leaf1:
         type: junos
         os: vqfx
         interfaces:
           em0: [mgmt,172.16.14.33/24]
-          xe-0/0/0: s1l1
-          xe-0/0/1: s2l1
-          xe-0/0/2: l1p2
-          xe-0/0/3: l1p3
-    leaf2:
+          xe-0/0/0: site1s1l1
+          xe-0/0/1: site1s2l1
+          xe-0/0/2: site1l1p2
+          xe-0/0/3: site1l1p3
+    site1leaf2:
         type: junos
         os: vqfx
         interfaces:
           em0: [mgmt,172.16.14.34/24]
-          xe-0/0/0: s1l2
-          xe-0/0/1: s2l2
-          xe-0/0/2: l2p2
-          xe-0/0/3: l2p3
-          xe-0/0/4: l2p4
+          xe-0/0/0: site1s1l2
+          xe-0/0/1: site1s2l2
+          xe-0/0/2: site1l2p2
+          xe-0/0/3: site1l2p3
+          xe-0/0/4: site1l2p4
+    site2:
+        type: junos
+        os: vmx
+        interfaces:
+          fxp0: [mgmt,172.16.14.35/24]
+          ge-0/0/0: site2g0
+          ge-0/0/1: site2g1 
+          ge-0/0/2: site2g2
+    site2spine1:
+        type: junos
+        os: vqfx
+        interfaces:
+          em0: [mgmt,172.16.14.36/24]
+          xe-0/0/0: site2g2
+          xe-0/0/1: site2s1l1 
+          xe-0/0/2: site2s1l2
+    site2leaf1:
+        type: junos
+        os: vqfx
+        interfaces:
+          em0: [mgmt,172.16.14.37/24]
+          xe-0/0/0: site2s1l1
+          xe-0/0/1: site2s1l2
+          xe-0/0/2: site2l1p2
+          xe-0/0/3: site2l1p3
+          xe-0/0/4: site2l1p4
+    site2svr1:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.16/24]
+          em1: [site2l1p2,0.0.0.0/0]
+    site2svr2:
+        type: pcsmall
+        os: centos
+        interfaces:
+          em0: [mgmt,172.16.14.17/24]
+          em1: [site2l1p3,0.0.0.0/0]
+          em2: site2l1p4

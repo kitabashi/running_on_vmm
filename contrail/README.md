@@ -137,7 +137,7 @@ command to copy /etc/hosts
 ![install_pyyaml_request](images/install_pyyaml_request.png)
 
 2. Upload the ansible deployer file into node6 and unzip the file
-3. Upload this file [instances.yaml](instances.yaml) to node6, and put it inside directory `contrail-ansible-deployer/config
+3. Upload this file [contrai_config/instances.yaml](instances.yaml) to node6, and put it inside directory `contrail-ansible-deployer/config
 ![upload2.png](images/upload2.png)
 ![unzip_copy.png](images/unzip_copy.png)
 

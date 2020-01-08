@@ -3,8 +3,8 @@
 global_configuration:
   ENABLE_DESTROY: True
   CONTAINER_REGISTRY: hub.juniper.net/contrail
-  CONTAINER_REGISTRY_USERNAME: JNPR-FieldUser5
-  CONTAINER_REGISTRY_PASSWORD: SjvBqx3ktFuWVC4REX7y
+  CONTAINER_REGISTRY_USERNAME: <username>
+  CONTAINER_REGISTRY_PASSWORD: <password>
 provider_config:
   bms:
     ssh_user: root

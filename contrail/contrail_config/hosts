@@ -11,8 +11,8 @@
 172.16.255.10    site1
 172.16.255.11    site1spine1
 172.16.255.12    site1spine2
-172.16.255.13   site1leaf1
+172.16.255.13    site1leaf1
 172.16.255.14    site1leaf2
 172.16.255.20    site2
 172.16.255.21    site2spine1
-172.16.255.22   site2leaf1
+172.16.255.22    site2leaf1
