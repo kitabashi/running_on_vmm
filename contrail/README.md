@@ -137,7 +137,7 @@ command to copy /etc/hosts
 ![install_pyyaml_request](images/install_pyyaml_request.png)
 
 2. Upload the ansible deployer file into node6 and unzip the file
-3. Upload this file [contrai_config/instances.yaml](instances.yaml) to node6, and put it inside directory `contrail-ansible-deployer/config
+3. Upload this file [instances.yaml](contrail_config/instances.yaml) to node6, and put it inside directory `contrail-ansible-deployer/config
 ![upload2.png](images/upload2.png)
 ![unzip_copy.png](images/unzip_copy.png)
 
@@ -174,7 +174,7 @@ command to copy /etc/hosts
 
 The documentation is available [here](https://www.juniper.net/documentation/en_US/contrail19/topics/task/configuration/import-cluster-data-contrail-command.html)
 
-1. Upload the [command_servers.yml](command_servers.yml) to node6
+1. Upload the [command_servers.yml](contrail_config/command_servers.yml) to node6
 2. Install docker into node6
 ![install_docker](images/install_docker.png)
 2. Login into hub.juniper.net
