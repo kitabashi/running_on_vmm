@@ -61,7 +61,7 @@ There are different arguments required by this script
 - argument `get_serial` :  to get serial console information of the active VMs in the VMM
 
 ## Caution 
-- when the script is used to start the topology, any existing running topology will be stopped and unbound. Please backup the existing topology if  needed.
+- when the script is used to start the topology, any existing running topology will be stopped and unbound. Please backup the existing topology if needed.
 - this script will need a GW which will be assigned with IP address from juniper's VMM lab. The rest of the VMs (devices), their management will be connected to virtual network behind the GW.
 - to access the other devices (other than GW), VM GW can be used as jump host, or VM GW can be configured as VPN server using [wireguard](https://www.wireguard.com/install/) or openvpn
  
