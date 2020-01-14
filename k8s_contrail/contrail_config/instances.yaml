@@ -1,0 +1,61 @@
+---
+# Contrail inventory section
+global_configuration:
+  ENABLE_DESTROY: True
+  CONTAINER_REGISTRY: hub.juniper.net/contrail
+  CONTAINER_REGISTRY_USERNAME: <username>
+  CONTAINER_REGISTRY_PASSWORD: <password>
+
+provider_config:
+  bms:
+    ssh_user: root
+    ssh_pwd: pass01
+    ntpserver: ntp.juniper.net
+    domainsuffix: testbed.com
+    ssh_public_key: /root/.ssh/id_rsa.pub
+    ssh_private_key: /root/.ssh/id_rsa
+instances:
+  node0:
+    ip: 172.16.10.10
+    provider: bms
+    roles:
+      config:
+      config_database:
+      control:
+      webui:
+      analytics:
+      analytics_database:
+      analytics_alarm:
+      analytics_snmp:
+      k8s_master:
+      kubemanager:
+  node1:
+    ip: 172.16.10.11
+    provider: bms
+    roles:
+      vrouter:
+      k8s_node:
+  node2:
+    ip: 172.16.10.12
+    provider: bms
+    roles:
+      vrouter:
+      k8s_node:
+  node3:
+    ip: 172.16.10.13
+    provider: bms
+    roles:
+      vrouter:
+      k8s_node:
+
+contrail_configuration:
+  CONTRAIL_VERSION: 1912.32
+  CLOUD_ORCHESTRATOR: kubernetes
+  ENCAP_PRIORITY: VXLAN,MPLSoUDP,MPLSoGRE
+  UPGRADE_KERNEL: true
+  CONFIG_NODEMGR__DEFAULTS__minimum_diskGB: 10
+  DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 10
+  CONFIG_DATABASE_NODEMGR__DEFAULTS__minimum_diskGB: 10
+  CONTROL_NODES: 172.16.10.10
+  CONTROLLER_NODES: 172.16.10.10
+  JVM_EXTRA_OPTS: "-Xms1g -Xmx2g"

@@ -1,0 +1,32 @@
+host vmmgw
+    hostname 10.49.224.111
+    user root
+	IdentityFile ~/.ssh/id_rsa
+host node0
+	User root
+	IdentityFile ~/.ssh/id_rsa
+	ProxyCommand ssh -W 172.16.10.10:22 vmmgw
+host node1
+	User root
+	IdentityFile ~/.ssh/id_rsa
+	ProxyCommand ssh -W 172.16.10.11:22 vmmgw
+host node2
+	User root
+	IdentityFile ~/.ssh/id_rsa
+	ProxyCommand ssh -W 172.16.10.12:22 vmmgw
+host node3
+	User root
+	IdentityFile ~/.ssh/id_rsa
+	ProxyCommand ssh -W 172.16.10.13:22 vmmgw
+host node4
+	User root
+	IdentityFile ~/.ssh/id_rsa
+	ProxyCommand ssh -W 172.16.10.14:22 vmmgw
+host deployer
+	User root
+	IdentityFile ~/.ssh/id_rsa
+	ProxyCommand ssh -W 172.16.13.10:22 vmmgw
+host cc
+	User root
+	IdentityFile ~/.ssh/id_rsa
+	ProxyCommand ssh -W 172.16.13.11:22 vmmgw

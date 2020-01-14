@@ -67,4 +67,5 @@ There are different arguments required by this script
  
 ## How to run the script (Step by step)
 - **[Running simple topology](simple/README.md)**
-- **[Contrail Lab](contrail/README.md)**
+- **[openstack + Contrail Lab](contrail/README.md)**
+- **[kubernetes + contrail  Lab](k8s_contrail/README.md)**

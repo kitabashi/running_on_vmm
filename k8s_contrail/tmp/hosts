@@ -1,0 +1,9 @@
+127.0.0.1	localhost.localdomain localhost
+::1		localhost6.localdomain6 localhost6
+172.16.10.10 node0
+172.16.10.11 node1
+172.16.10.12 node2
+172.16.10.13 node3
+172.16.10.14 node4
+172.16.13.10 deployer
+172.16.13.11 cc

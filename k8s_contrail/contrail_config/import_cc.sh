@@ -1,0 +1,1 @@
+docker run -t --net host -e orchestrator=openstack -e action=import_cluster -v $PWD/command_servers.yml:/command_servers.yml -v $PWD/instances.yaml:/instances.yml -d --privileged --name contrail_command_deployer hub.juniper.net/contrail/contrail-command-deployer:1910.23
