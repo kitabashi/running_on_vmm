@@ -37,9 +37,9 @@ subnets in the testbed
 4. Record the IP address of GW assigned by VMM
 ![IP_GW](images/IP_GW.png)
 5. edit the following file [ssh_config](ssh_config), replace the vmmgw hostname with the ip address of the gateway from previous step, and add this file into your home ssh's config 
-![ssh_config])(images/ssh_config1.png)
-![ssh_config])(images/ssh_config2.png)
-![ssh_config])(images/ssh_config3.png)
+![ssh_config](images/ssh_config1.png)
+![ssh_config](images/ssh_config2.png)
+![ssh_config](images/ssh_config3.png)
 5. Wait for few minutes to allow the VMs to be up and running
 6. SSH into GW and verify that all nodes are up and running
 ![ping1.png](images/ping1.png)
