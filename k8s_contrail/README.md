@@ -102,6 +102,6 @@ subnets in the testbed
 7. Run the following command :
     - ansible-playbook -i inventory/ -e orchestrator=kubernetes playbooks/install_contrail.yml
 ![vnc4](images/vnc4.png)
-8. Contrail installation is done. It can be verified by accessing the kubectl on node0 (172.16.10.10) or contrail dashboard (old UI, http://172.16.11.10:8180) or run the command `contrail-status` on any of the contrail-nodes (controller, compute, or CSN)
+8. Contrail installation is done. It can be verified by accessing the kubectl on node0 (172.16.10.10) or contrail dashboard (http://172.16.10.10:8180) or run the command `contrail-status` on any of the contrail-nodes (controller or k8s nodes)
 9. Now the installation of openstack, contrail networking, appformix and contrail command is done. You can start playing around with it or you can use the following [lab exercise](https://github.com/m1r24n/running_on_vmm/tree/master/contrail/contrail_k8s_lab_exercise)
 

@@ -62,10 +62,12 @@ There are different arguments required by this script
 
 ## Caution 
 - when the script is used to start the topology, any existing running topology will be stopped and unbound. Please backup the existing topology if needed.
-- this script will need a GW which will be assigned with IP address from juniper's VMM lab. The rest of the VMs (devices), their management will be connected to virtual network behind the GW.
+- this script will need a GW which will be assigned with IP address from juniper's VMM lab. The rest of the VMs (devices), their interfaces management will be connected to virtual network behind the GW.
 - to access the other devices (other than GW), VM GW can be used as jump host, or VM GW can be configured as VPN server using [wireguard](https://www.wireguard.com/install/) or openvpn
  
 ## How to run the script (Step by step)
 - **[Running simple topology](simple/README.md)**
 - **[openstack + Contrail Lab](contrail/README.md)**
 - **[kubernetes + contrail  Lab](k8s_contrail/README.md)**
+- **[Healthbot + NS  Lab](HB_NS/README.md)**
+
